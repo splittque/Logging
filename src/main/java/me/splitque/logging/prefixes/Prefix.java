@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Prefix {
-    private static final String TIME = Color.CYAN + "[" + LocalDate.now() + " " + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] ";
+    private static String TIME = Color.CYAN + "[" + LocalDate.now() + " " + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] ";
     public static String MESSAGE(String name, String color) {
         if (name == null || name.isBlank()) return TIME + color;
         if (name != null & !name.isBlank()) return TIME + color + "(" + name + ") ";
