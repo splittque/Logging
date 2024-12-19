@@ -1,0 +1,33 @@
+plugins {
+    id("java")
+}
+
+group = "me.splitque"
+version = "1.1-alpha"
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    libToJar
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation fileTree(dir: 'libs', include: '*.jar')
+    libToJar fileTree(dir: 'libs', include: '*.jar')
+}
+
+jar {
+    from {
+        configurations.libToJar.collect() {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
